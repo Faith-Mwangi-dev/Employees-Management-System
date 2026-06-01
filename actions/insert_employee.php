@@ -1,5 +1,9 @@
 <?php
+session_start();
 include "../includes/db.php";
+if ($_SESSION['role'] != 'admin') {
+    die("Access denied");
+}
 
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];

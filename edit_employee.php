@@ -20,24 +20,19 @@ $row = $result->fetch_assoc();
 
         <select name ="department"><br>
             <option value="ICT"
-                <?php if($row['department'] == 'ICT') echo 'selected'; ?>>
-                ICT
+                <?php if($row['department'] == 'ICT') echo 'selected'; ?>>ICT
             </option>
             <option value="HR"
-                <?php if($row['department'] == 'HR') echo 'selected'; ?>>
-                HR
+                <?php if($row['department'] == 'HR') echo 'selected'; ?>>HR
             </option>
             <option value="Finance"
-                <?php if($row['department'] == 'Finance') echo 'selected'; ?>>
-                Finance
+                <?php if($row['department'] == 'Finance') echo 'selected'; ?>>Finance
             </option>
             <option value="marketing"
-                <?php if($row['department'] == 'marketing') echo 'selected'; ?>>
-                Marketing
+                <?php if($row['department'] == 'marketing') echo 'selected'; ?>>Marketing
             </option>
             <option value="Operations"
-                <?php if($row['department'] == 'Operations') echo 'selected'; ?>>
-                Operations
+                <?php if($row['department'] == 'Operations') echo 'selected'; ?>>Operations
             </option>
 
         </select><br><br>
@@ -45,6 +40,7 @@ $row = $result->fetch_assoc();
         <input type = "text" name="salary" value="<?php echo $row['salary']; ?>"><br>
         <label>Date hired:</label><br>
         <input type = "date" name="hire_date" value="<?php echo $row['hire_date']; ?>"><br>
+        <button type = "submit"> Update Employee </button>
     </form>
 </div>
 
