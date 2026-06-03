@@ -13,12 +13,18 @@ include "includes/header.php";
 
 <div class="container mt-4">
     <?php
-    //Employees can only view
     if ($_SESSION['role'] == 'staff') {
-        echo "<div class='alert alert-info'>You have view-only access.</div>";
-    }
-    ?>
 
+    $user_id = $_SESSION['user_id'];
+    $sql = "SELECT * FROM employees WHERE user_id = '$user_id'";
+
+} else {
+
+    $sql = "SELECT * FROM employees";
+
+}
+    ?>
+    
     <?php 
     // Only admin can add employees
     if ($_SESSION['role'] == 'admin') { 
@@ -27,7 +33,7 @@ include "includes/header.php";
     <?php } ?>
 
     <?php
-    $result = $conn->query("SELECT * FROM employees");
+    $result = $conn->query($sql);
     while($row = $result->fetch_assoc()) {
     ?>
 
@@ -44,6 +50,18 @@ include "includes/header.php";
                 <p> <strong>Salary:</strong>KES <?php echo $row['salary']; ?></p>
 
                 <p><strong>Date hired:</strong> <?php echo $row['hire_date']; ?></p>
+
+                 <?php
+                //Employees can only view their own records
+                if ($_SESSION['role']== 'staff') {
+                    $user_id = $_SESSION['user_id'];
+                    $sql = "SELECT * FROM employees WHERE user_id = '$user_id' ";
+                    ?>
+                    <a class="btn btn-primary"
+                    href="edit_profile.php?id=<?php echo $row['id']; ?>">
+                    Edit Profile
+                    </a>
+                <?php } ?>
 
                 <!-- ADMIN ONLY -->
                 <?php if ($_SESSION['role'] == 'admin') { ?>
