@@ -1,4 +1,11 @@
 <?php include "includes/header.php"; ?>
+<?php
+if(isset($_GET['success'])){
+    echo "<div class='alert alert-success'>
+            Password changed successfully.
+          </div>";
+}
+?>
 
 <div class="container mt-5">
 
@@ -37,5 +44,6 @@
     </div>
 
 </div>
+<a href="forgot_password.php">Forgot Password?</a>
 
 <?php include "includes/footer.php"; ?>

@@ -13,6 +13,13 @@ include "includes/header.php";
 
 <div class="container mt-4">
     <?php
+    if (isset($_GET['reset'])) {
+        echo "<div class='alert alert-success'>
+                Password reset successfully.
+            </div>";
+    }
+    ?>
+    <?php
     if ($_SESSION['role'] == 'staff') {
 
     $user_id = $_SESSION['user_id'];
@@ -77,6 +84,13 @@ include "includes/header.php";
                 ?>
                     <a class="btn btn-primary" 
                     href="edit_employee.php?id=<?php echo $row['id']; ?>">Edit
+                    </a>
+                <?php } ?>
+                <?php if ($_SESSION['role'] == 'admin') { ?>
+                    <a class="btn btn-secondary"
+                    href="reset_password.php?id=<?php echo $row['user_id']; ?>"
+                    onclick="return confirm('Reset this user password to Welcome123?')">
+                    Reset Password
                     </a>
                 <?php } ?>
 
